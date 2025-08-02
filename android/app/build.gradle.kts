@@ -6,13 +6,15 @@ plugins {
 }
 
 android {
-    namespace = "com.example.my_apmanager"
-    compileSdk = flutter.compileSdkVersion
-    ndkVersion "27.0.12077973"
+    // حل الخطأ الأول: تحديد إصدار NDK الذي تطلبه الحزم
+    ndkVersion "27.0.12077973" 
+
+    namespace "com.example.debt_manager" // <-- حل الخطأ الثاني
+    compileSdkVersion 34 // <-- تحديث مهم
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     kotlinOptions {
