@@ -1,0 +1,32 @@
+workflows:
+  android-release-build:
+    name: Android Release Build
+    instance_type: mac_mini_m1
+    environment:
+      flutter: stable # أو إصدار محدد مثل 2.10.5
+      groups:
+        - keystore_credentials # مجموعة متغيرات آمنة لتوقيع التطبيق
+    scripts:
+      - name: Set up local.properties
+        script: | 
+          echo "flutter.sdk=$FLUTTER_ROOT" > "$FCI_BUILD_DIR/android/local.properties"
+      - name: Get Flutter packages
+        script: | 
+          flutter pub get
+      - name: Build APK with specific version
+        script: | 
+          # قم بتغيير رقم الإصدار حسب حاجتك
+          # مثلاً: 1.0.1+2
+          VERSION_NAME="1.0.0"
+          BUILD_NUMBER=$(($FCI_BUILD_NUMBER + 1)) # يبدأ من 1 ويزيد مع كل بناء
+          flutter build apk --release --build-name=$VERSION_NAME --build-number=$BUILD_NUMBER
+    artifacts:
+      - build/app/outputs/flutter-apk/app-release.apk
+    publishing:
+      # يمكنك هنا إعداد النشر التلقائي إلى Google Play أو إرسال بريد إلكتروني
+      email:
+        recipients:
+          - akmin2005@outlook.com
+        notify:
+          success: true
+          failure: true
