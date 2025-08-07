@@ -5,7 +5,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.19.6 <3.0.0'
+  sdk: '>=3.0.0 <4.0.0'
 
 dependencies:
   flutter:
@@ -23,7 +23,10 @@ dependencies:
   path_provider: ^2.0.12
 
   # لتهيئة التواريخ
-  intl: ^0.20.0
+  intl: ^0.20.2
+  
+  # لتوليد معرفات فريدة
+  uuid: ^4.4.0
 
   # لتصدير الملفات
   pdf: ^3.10.1         # لإنشاء ملفات PDF
@@ -34,7 +37,21 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  flutter_lints: ^3.0.0
 
 flutter:
   uses-material-design: true
+
+  # لإضافة خطوط مخصصة
+  fonts:
+    - family: Cairo
+      fonts:
+        - asset: assets/fonts/Cairo-Regular.ttf
+        - asset: assets/fonts/Cairo-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Cairo-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Cairo-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Cairo-Black.ttf
+          weight: 900

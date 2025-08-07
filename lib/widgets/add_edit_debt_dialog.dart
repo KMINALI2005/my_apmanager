@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-import 'dart:math';
+import 'package:uuid/uuid.dart';
 import '../models/debt_model.dart';
 import '../providers/debt_provider.dart';
 
@@ -102,7 +102,7 @@ void showAddEditDebtDialog(BuildContext context, {Debt? debt}) {
             onPressed: () {
               if (_formKey.currentState!.validate()) {
                 final newDebt = Debt(
-                  id: isEditing ? debt.id : DateTime.now().millisecondsSinceEpoch.toString() + Random().nextInt(999).toString(),
+                  id: isEditing ? debt.id : const Uuid().v4(),
                   name: _nameController.text,
                   amount: double.parse(_amountController.text),
                   category: _selectedCategory,
