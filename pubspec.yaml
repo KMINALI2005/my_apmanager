@@ -23,7 +23,7 @@ dependencies:
   path_provider: ^2.0.12
 
   # لتهيئة التواريخ
-  intl: ^0.20.2
+  intl: ^0.18.1
   
   # لتوليد معرفات فريدة
   uuid: ^4.4.0
